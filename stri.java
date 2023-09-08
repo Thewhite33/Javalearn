@@ -16,7 +16,7 @@ public class stri{
         }
         return true;
     }
-    public static int getPath(String path){
+    public static int getShortestPath(String path){
         int x = 0,y=0;
 
         for(int i=0;i<path.length();i++){
