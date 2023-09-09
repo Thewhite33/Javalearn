@@ -54,6 +54,13 @@ public class datatypes{
         // int area = side*side;
         // System.out.println("Area is:" + area);
 
+        //Third side of triangle
+        // Scanner sc = new Scanner(System.in);
+        // int a = sc.nextInt();
+        // int b = sc.nextInt();
+        // int c = 180 - (a+b);
+        // System.out.println(c);
+
 
     }
 }
