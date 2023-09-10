@@ -49,3 +49,44 @@ class Student{
         this.name = name;
     }
 }
+//Abstraction
+abstract class Animals{
+    void animal(){
+        System.out.println("Animal Class called");
+    }
+    void eat(){
+        System.out.println("Animal eats");
+    }
+    abstract void walks();
+}
+
+class Horse extends Animals{
+    void walks(){
+        System.out.println("Walks on 4 legs");
+    }
+}
+
+//Interfaces 
+interface Chess{
+    void move();
+}
+class Queen implements Chess{
+    public void move(){
+        System.out.println("Moves");
+    }
+}
+
+//Nested classes
+class Stu{
+    String name;
+    int roll;
+
+    static String Schoolname; //Declare ones and whenever called will get the same school name
+
+    void setName(String name){
+        this.name = name;
+    }
+    String getName(){
+        return this.name;
+    }
+}
