@@ -100,6 +100,54 @@ public class recursion {
         }
         return halfPowsq;
     }
+
+    public static int tillingProb(int n){
+        if(n==0 || n==1){
+            return 1;
+        }
+        int fnm1 = tillingProb(n-1);
+        int fnm2 = tillingProb(n-2);
+        int totWays = fnm1+fnm2;
+        return totWays;
+    }
+
+    public static void removeDuplicates(String str,int idx,StringBuilder newStr,boolean map[]){
+        if(idx == str.length()){
+            System.out.println(newStr);
+            return;
+        }
+        char currChar = str.charAt(idx);
+        if(map[currChar-'a']==true){
+            removeDuplicates(str, idx+1, newStr, map);
+        }
+        else{
+            map[currChar-'a'] = true;
+            removeDuplicates(str, idx+1, newStr.append(currChar), map);
+        }
+    }
+
+    public static int friendsPairing(int n){
+        if(n==1 || n==2){
+            return n;
+        }
+        int fnm1 = friendsPairing(n-1);
+        int fnm2 = friendsPairing(n-2);
+        int pairWays = (n-1) * fnm2;
+
+        int totWays = fnm1 + pairWays;
+        return totWays;
+    }
+
+    public static void printBinStrings(int n,int lastplace,String str){
+        if(n==0){
+            System.out.println(str);
+            return;
+        }
+        printBinStrings(n-1, 0, str+"0"); 
+        if(lastplace == 0){
+            printBinStrings(n-1, 1, str+"1");
+        }
+    }
     public static void main(String args[]){
         //int n = 10;
         //printDec(n);
@@ -112,6 +160,11 @@ public class recursion {
         //System.out.println(firstOccurence(arr, 1,0));
         //System.out.println(lastOccurence(arr, 1,0));
         //System.out.println(pow(2, 10));
-        System.out.println(optimizedPow(2, 100));
+        //System.out.println(optimizedPow(2, 100));
+        //System.out.println(tillingProb(3));
+        // String str = "apnnacollege";
+        // removeDuplicates(str, 0, new StringBuilder(""), new boolean[26]);
+        //System.out.println(friendsPairing(3));
+        printBinStrings(3, 0,"");
     }
 }
