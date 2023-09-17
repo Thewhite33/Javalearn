@@ -14,7 +14,7 @@ public class linkedlist {
 
     //Methods will be made
 
-    public void addFirst(int data){
+    public void LastaddFirst(int data){
         //Create new node
         Node newNode = new Node(data);
         size++;
@@ -56,7 +56,7 @@ public class linkedlist {
 
     public void add(int idx,int data){
         if(idx == 0){
-            addFirst(data);
+            //addFirst(data);
             return;
         }
         Node newNode = new Node(data);
@@ -225,19 +225,57 @@ public class linkedlist {
 
         return true;
     }
+
+    public void zigZag(){
+        //Find mid
+        Node slow = head;
+        Node fast = head.next;
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        Node mid = slow;
+        //Reverse 2nd half
+        Node curr = mid.next;
+        mid.next = null;
+        Node prev = null;
+        Node next;
+
+        while(curr!=null){
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+
+        Node left = head;
+        Node right = prev;
+        Node nextL,nextR;
+        //alt merge - zig-zag merge
+        while(left !=null && right!=null){
+            nextL = left.next;
+            left.next = right;
+            nextR = right.next;
+            right.next = nextL;
+
+            left = nextL;
+            right = nextR;
+        }
+    }
     public static void main(String args[]){
         linkedlist ll = new linkedlist();
-        ll.print();
-        ll.addFirst(1);
-        ll.print();
-        ll.addFirst(2);
-        ll.print();
-        ll.addLast(2);
-        ll.print();
+        //ll.print();
         ll.addLast(1);
-        ll.print();
+        //ll.print();
+        ll.addLast(2);
+        //ll.print();
+        ll.addLast(3);
+        //ll.print();
+        ll.addLast(4);
+        ll.addLast(5);
+        //ll.print();
         //ll.add(2, 9);
-        ll.print();
+        //ll.print();
         //System.out.println(ll.size);
 
         //ll.removeFirst();
@@ -249,6 +287,8 @@ public class linkedlist {
         // ll.print();
         //ll.deleteNthfromEnd(3);
         //ll.print();
-        System.out.println(ll.checkkarPalin());
+        //System.out.println(ll.checkkarPalin());
+        ll.zigZag();
+        ll.print();
     }
 }
