@@ -1,6 +1,18 @@
 import java.util.*;
 
 public class greedy {
+    //6.Job question
+    // static class Job{
+    //     int deadline;
+    //     int profit;
+    //     int id;
+
+    //     public Job(int i,int d,int p){
+    //         id = i;
+    //         deadline = d;
+    //         profit = p;
+    //     }
+    // }
     public static void main(String args[]){
         // //1.You are given n activities with their start and finish times. Select the maximum number of activities that can be performed by a single person, assuming that a person can only work on a single activity at a time. 
         // int start[] = {1,3,0,5,8,5};
@@ -124,8 +136,69 @@ public class greedy {
         // System.out.println();
 
         //6.Given an array of jobs where every job has a deadline and associated profit if the job is finished before the deadline. It is also given that every job takes a single unit of time, so the minimum possible deadline for any job is 1. Maximize the total profit if only one job can be scheduled at a time.
-        
+        // int jobsInfo[][] = {{4,20},{1,10},{1,40},{1,30}};
 
+        // ArrayList<Job> jobs = new ArrayList<>();
+
+        // for(int i=0;i<jobsInfo.length;i++){
+        //     jobs.add(new Job(i,jobsInfo[i][0],jobsInfo[i][1]));
+        // }
+
+        // Collections.sort(jobs,(a,b) -> b.profit-a.profit); //decending order profit
+
+        // ArrayList<Integer> seq = new ArrayList<>();
+        // int time = 0;
+        // for(int i=0;i<jobs.size();i++){
+        //     Job curr = jobs.get(i);
+        //     if(curr.deadline>time){
+        //         seq.add(curr.id);
+        //         time++;
+        //     }
+        // }
+        // //Print Seq
+        // System.out.println("max jobs = "+seq.size());
+        // for(int i=0;i<seq.size();i++){
+        //     System.out.print(seq.get(i)+" ");
+        // }
+        // System.out.println();
+
+        //7.You have one chocolate bar that consists of some chunks. Each chunk has its own sweetness given by the array sweetness.
+        // You want to share the chocolate with your K friends so you start cutting the chocolate bar into K+1 pieces using K cuts, each piece consists of some consecutive chunks.
+        // Being generous, you will eat the piece with the minimum total sweetness and give the other pieces to your friends.
+        // Find the maximum total sweetness of the piece you can get by cutting the chocolate bar optimally.
+    
+        int n=4,m=6;
+        Integer costVer[] = {2,1,3,1,4};
+        Integer costHor[] = {4,1,2};
+        Arrays.sort(costVer,Collections.reverseOrder());
+        Arrays.sort(costHor,Collections.reverseOrder());
+
+        int h=0,v=0;
+        int hp=1,vp=1;
+        int cost = 0;
+        while(h<costHor.length && v<costVer.length){
+            if(costVer[v] <= costHor[h]){
+                cost += (costHor[h]*vp);
+                hp++;
+                h++;
+            }else{
+                cost += (costVer[v]*hp);
+                vp++;
+                v++;
+            }
+        }
+        while(h<costHor.length){
+            cost += (costHor[h]*vp);
+            hp++;
+            h++;
+        }
+        while(v<costVer.length){
+            cost += (costVer[v]*hp);
+            vp++;
+            v++;
+        }
+        System.out.println("Min cuts "+ cost);
+    
     
     }
     
