@@ -88,15 +88,70 @@ public class hasmap {
         // tm.put("Nepal", 60);
 
         // System.out.println(tm);
-
-
-        
         String s = "race";
         String t = "care";
-        System.out.println(isAnangram(s, t));
-
+        //System.out.println(isAnangram(s, t));
         }
     
+
+        //HashSet
+        HashSet<Integer> set = new HashSet<>();
+
+        set.add(1);
+        set.add(2);
+        set.add(4);
+        set.add(2);
+        set.add(1);
+
+        //System.out.println(set);
+
+        // HashSet<String> cities = new HashSet<>();
+        // cities.add("Delhi");
+        // cities.add("Mumbai");
+        // cities.add("Pune");
+        // cities.add("Noida");
+
+        // Iterator it = cities.iterator();
+        // while(it.hasNext()){
+        //     //System.out.println(it.next());
+        // }
+
+        LinkedHashSet<String> lhs = new LinkedHashSet<>();
+        lhs.add("Delhi");
+        lhs.add("Mumbai");
+        lhs.add("Pune");
+        lhs.add("Agra");
+
+        //System.out.println(lhs);
+
+        int arr1[] = {7,3,9};
+        int arr2[] = {6,3,9,2,9,4};
+        HashSet<Integer> se = new HashSet<>();
+
+        //Union
+        for(int i=0;i<arr1.length;i++){
+            se.add(arr1[i]);
+        }
+        for(int i=0;i<arr2.length;i++){
+            se.add(arr2[i]);
+        }
+        System.out.println("Union = "+se.size());
+
+        //Intersection
+        se.clear();
+        for(int i=0;i<arr1.length;i++){
+            se.add(arr1[i]);
+        }
+        int count = 0;
+        for(int i=0;i<arr2.length;i++){
+            if(set.contains(arr2[i])){
+                count++;
+                set.remove(arr2[i]);
+            }
+        }
+        System.out.println("Intersection = "+count);
+
+
 
         
     }
