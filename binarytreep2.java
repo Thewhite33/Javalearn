@@ -1,7 +1,7 @@
 import java.util.*;
 public class binarytreep2 {
     static class Node{
-        int data;
+        int data,height;
         Node left;
         Node right;
 
@@ -141,6 +141,27 @@ public class binarytreep2 {
         return createBST(finalArr, 0, finalArr.size()-1);
     }
 
+    public static Node insert(Node root,int key){
+        if(root == null){
+            return new Node(key);
+        }
+        if(key<root.data){
+            root.left = insert(root.left, key);
+        }else if(key>root.data){
+            root.right = insert(root.right, key);
+        }else{
+            return root;
+        }
+
+    }
+
+    public static int height(Node root){
+        if(root == null){
+            return 0;
+        }
+        return root.height;
+    }
+
     public static void main (String args[]){
         //int arr[] = {3,5,6,8,10,11,12};
 
@@ -167,13 +188,13 @@ public class binarytreep2 {
         // root.right.right.left = new Node(65);
         // root.right.right.right = new Node(80);
 
-        Node root1 = new Node(2);
-        root1.left = new Node(1);
-        root1.right = new Node(4);
+        // Node root1 = new Node(2);
+        // root1.left = new Node(1);
+        // root1.right = new Node(4);
 
-        Node root2 = new Node(9);
-        root2.left = new Node(3);
-        root2.right = new Node(12);
+        // Node root2 = new Node(9);
+        // root2.left = new Node(3);
+        // root2.right = new Node(12);
 
         // root = balanceBST(root);
         // preorder(root);
@@ -181,8 +202,10 @@ public class binarytreep2 {
         // Info info = largestBST(root);
         // System.out.println(maxBST);
 
-        Node root = mergeBSTs(root1, root2);
-        preorder(root);
+        // Node root = mergeBSTs(root1, root2);
+        // preorder(root);
+
+        root = insert(root,10;)
     
     }
 }
